@@ -1,10 +1,7 @@
 # personal-finance-tracker
 
-Perfect 🚀 Putting your **Personal Finance Tracker** project on GitHub with a clean structure, README, and `.gitignore` will make it look professional and showcase your skills well.
-
-Here’s how you can set it up step by step:
-
----
+A Spring Boot + PostgreSQL based RESTful backend for managing personal finances.  
+This project helps users track **income, expenses, categories, and transactions** with advanced reporting.
 
 ## 🔹 1. Project Folder Structure (example)
 
@@ -22,10 +19,7 @@ personal-finance-tracker/
 
 
 ````markdown
-# 💰 Personal Finance Tracker
 
-A Spring Boot + PostgreSQL based RESTful backend for managing personal finances.  
-This project helps users track **income, expenses, categories, and transactions** with advanced reporting.
 
 ---
 
