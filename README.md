@@ -9,7 +9,7 @@ This project helps users track **income, expenses, categories, and transactions*
 personal-finance-tracker/
  ├── src/
  │    └── main/
- │         ├── java/com/yourname/finance/...
+ │         ├── java/com/finance/tracker...
  │         └── resources/
  │              └── application.properties
  ├── pom.xml
