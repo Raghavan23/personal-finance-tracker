@@ -2,12 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>FinancetrackerFrontend</title>
+  <title>Elegostra — Financial Intelligence for Modern Businesses</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!-- Tailwind CSS CDN with forms and container queries plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              500: '#16a34a',
+              900: '#0f172a',
+              orange: '#f95738',
+              orangeHover: '#e04326',
+              royal: '#2e5bff',
+              dark: '#0c0f17',
+              grayBg: '#f4f5f8',
+              cardBg: '#f8fafc',
+            }
+          },
+          boxShadow: {
+            'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.05)',
+            'card': '0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02)',
+            'floating': '0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.05)',
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
+<body class="bg-[#FAFAFB] text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-slate-900 selection:text-white">
   <app-root></app-root>
 </body>
 </html>

@@ -1,37 +1,832 @@
-<div class="page-container">
-  <div class="page-header">
-    <h1 class="page-title">Financial Overview</h1>
-    <p class="page-subtitle">Track your net worth, cash flow, and spending habits.</p>
-  </div>
+<div class="w-full min-h-screen bg-[#FAFAFB] text-slate-900 pb-16">
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-20 sm:space-y-28">
+    
+    <!-- BEGIN: MainHeader -->
+    <header class="w-full flex items-center justify-between relative z-50">
+      <!-- Brand Logo -->
+      <a class="flex items-center gap-2.5 group" href="#">
+        <div class="w-7 h-7 relative flex items-center justify-center">
+          <!-- Geometric polygon icon -->
+          <svg class="w-7 h-7 fill-slate-900 text-slate-900 transition-transform group-hover:scale-105" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 19.5H22L12 2Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2.5"></path>
+            <path d="M7 19.5L12 10.5L17 19.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+          </svg>
+        </div>
+        <span class="font-bold text-xl tracking-tight text-slate-900">Elegostra</span>
+      </a>
 
-  <div class="stats-grid">
-    <app-stat-card
-      title="Total Balance"
-      [value]="totalBalance() | appCurrency"
-      icon="💵"
-      subtitle="+8.4% from last month"
-      trend="positive"
-    />
-    <app-stat-card
-      title="Monthly Income"
-      [value]="monthlyIncome() | appCurrency"
-      icon="📥"
-      subtitle="Active & Recurring"
-      trend="positive"
-    />
-    <app-stat-card
-      title="Monthly Expenses"
-      [value]="monthlyExpense() | appCurrency"
-      icon="📤"
-      subtitle="47% of total budget"
-      trend="neutral"
-    />
-    <app-stat-card
-      title="Savings Rate"
-      [value]="savingsRate()"
-      icon="🎯"
-      subtitle="Goal: > 50%"
-      trend="positive"
-    />
+      <!-- Center Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-[13.5px] font-medium text-slate-600">
+        <a class="hover:text-slate-900 transition-colors" href="#">Home</a>
+        <a class="hover:text-slate-900 transition-colors" href="#">Platform</a>
+        <a class="hover:text-slate-900 transition-colors" href="#">Who we are</a>
+        <a class="hover:text-slate-900 transition-colors" href="#">Reviews</a>
+        <a class="hover:text-slate-900 transition-colors" href="#">Contact</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="flex items-center gap-3">
+        <a class="px-5 py-2 text-xs font-semibold text-slate-700 hover:text-slate-900 border border-slate-200 rounded-full hover:bg-slate-50 transition-all" href="#">Log in</a>
+        <a class="px-5 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-full transition-all shadow-sm" href="#">Sign up</a>
+      </div>
+    </header>
+    <!-- END: MainHeader -->
+
+    <!-- BEGIN: HeroSection -->
+    <section class="pt-4 pb-12 relative overflow-hidden" data-purpose="hero-container">
+      <div class="max-w-4xl mx-auto text-center relative z-20">
+        <h1 class="text-4xl sm:text-5xl md:text-[58px] font-bold text-slate-900 tracking-tight leading-[1.12]">
+          Financial intelligence for<br class="hidden sm:inline"/> modern businesses
+        </h1>
+        <p class="mt-5 text-[15px] sm:text-base text-slate-500 max-w-2xl mx-auto leading-relaxed font-normal">
+          Elegostra helps companies track financial performance, analyze spending, and turn complex data into clear insights that drive smarter business decisions.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="mt-7 flex items-center justify-center gap-4">
+          <a class="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-full shadow-md transition-all" href="#">
+            Get Started
+          </a>
+          <a class="px-6 py-2.5 bg-transparent hover:bg-slate-100 text-slate-800 text-xs font-semibold rounded-full border border-slate-300 transition-all" href="#">
+            Contact a Team
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Illustration & Floating Dashboard Cards Centerpiece -->
+      <div class="max-w-5xl mx-auto relative mt-8 sm:mt-12 h-[420px] sm:h-[480px] flex items-center justify-center">
+        <!-- Glow effect backdrop -->
+        <div class="absolute inset-0 hero-glow rounded-full scale-90 pointer-events-none"></div>
+
+        <!-- Orbital dashed lines -->
+        <div class="absolute w-[680px] h-[340px] orbit-dashed rotate-[-8deg] pointer-events-none"></div>
+        <div class="absolute w-[820px] h-[360px] orbit-dashed rotate-[12deg] pointer-events-none opacity-40"></div>
+
+        <!-- Centerpiece: Botanical Plant / Succulent Geometry -->
+        <div class="relative z-10 w-72 h-72 sm:w-88 sm:h-88 flex items-center justify-center succulent-shadow">
+          <svg class="w-full h-full transform hover:scale-105 transition-transform duration-700 ease-out" viewBox="0 0 500 500">
+            <defs>
+              <radialGradient cx="50%" cy="50%" id="centerGradient" r="50%">
+                <stop offset="0%" stop-color="#4ade80"></stop>
+                <stop offset="45%" stop-color="#22c55e"></stop>
+                <stop offset="85%" stop-color="#15803d"></stop>
+                <stop offset="100%" stop-color="#052e16"></stop>
+              </radialGradient>
+              <linearGradient id="leafGrad1" x1="0%" x2="100%" y1="0%" y2="100%">
+                <stop offset="0%" stop-color="#86efac"></stop>
+                <stop offset="50%" stop-color="#22c55e"></stop>
+                <stop offset="100%" stop-color="#14532d"></stop>
+              </linearGradient>
+              <linearGradient id="leafGrad2" x1="100%" x2="0%" y1="0%" y2="100%">
+                <stop offset="0%" stop-color="#bbf7d0"></stop>
+                <stop offset="60%" stop-color="#16a34a"></stop>
+                <stop offset="100%" stop-color="#064e3b"></stop>
+              </linearGradient>
+            </defs>
+            <g transform="translate(250,250)">
+              <path d="M0,0 C30,-120 120,-160 170,-110 C210,-60 150,40 0,0" fill="url(#leafGrad1)" opacity="0.95"></path>
+              <path d="M0,0 C-30,-120 -120,-160 -170,-110 C-210,-60 -150,40 0,0" fill="url(#leafGrad2)" opacity="0.9"></path>
+              <path d="M0,0 C-110,-40 -170,20 -160,90 C-140,160 -40,130 0,0" fill="url(#leafGrad1)" opacity="0.93"></path>
+              <path d="M0,0 C110,-40 170,20 160,90 C140,160 40,130 0,0" fill="url(#leafGrad2)" opacity="0.94"></path>
+              <path d="M0,0 C-80,80 -100,160 -30,180 C40,190 70,120 0,0" fill="url(#leafGrad1)" opacity="0.92"></path>
+              <path d="M0,0 C40,-80 100,-110 130,-70 C150,-30 110,40 0,0" fill="url(#leafGrad2)"></path>
+              <path d="M0,0 C-40,-80 -100,-110 -130,-70 C-150,-30 -110,40 0,0" fill="url(#leafGrad1)"></path>
+              <path d="M0,0 C-70,-30 -120,20 -100,70 C-80,110 -20,90 0,0" fill="url(#leafGrad2)"></path>
+              <path d="M0,0 C70,-30 120,20 100,70 C80,110 20,90 0,0" fill="url(#leafGrad1)"></path>
+              <path d="M0,0 C-40,60 -60,120 -10,130 C30,135 60,90 0,0" fill="url(#leafGrad2)"></path>
+              <path d="M0,0 C20,-50 60,-70 80,-40 C90,-15 60,30 0,0" fill="url(#leafGrad1)"></path>
+              <path d="M0,0 C-20,-50 -60,-70 -80,-40 C-90,-15 -60,30 0,0" fill="url(#leafGrad2)"></path>
+              <path d="M0,0 C-40,-20 -70,10 -60,40 C-40,60 -10,50 0,0" fill="url(#leafGrad1)"></path>
+              <path d="M0,0 C40,-20 70,10 60,40 C40,60 10,50 0,0" fill="url(#leafGrad2)"></path>
+              <circle cx="0" cy="0" fill="url(#centerGradient)" r="34"></circle>
+              <circle cx="0" cy="0" fill="#86efac" r="16"></circle>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Floating KPI Card 1: Top-Left (Income & Expenses) -->
+        <div class="absolute left-4 sm:left-12 top-6 sm:top-10 z-20 bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl shadow-floating border border-slate-100 w-52 sm:w-56 text-left">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-bold text-slate-800">$13,592.00</span>
+              <span class="text-[10px] font-semibold text-rose-500 bg-rose-50 px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
+                <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"></path></svg> 14.6%
+              </span>
+            </div>
+            <span class="text-[10px] text-slate-400 font-medium block">Income <span class="text-[9px] text-slate-300">vs prev. period</span></span>
+          </div>
+          <div class="my-2.5 border-t border-slate-100"></div>
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-bold text-slate-800">$12,167.00</span>
+              <span class="text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
+                <svg class="w-2.5 h-2.5 rotate-180" fill="currentColor" viewBox="0 0 20 20"><path d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"></path></svg> 8.3%
+              </span>
+            </div>
+            <span class="text-[10px] text-slate-400 font-medium block">Expenses <span class="text-[9px] text-slate-300">vs prev. period</span></span>
+          </div>
+        </div>
+
+        <!-- Floating KPI Card 2: Bottom-Left (Goal 56K) -->
+        <div class="absolute left-6 sm:left-16 bottom-10 sm:bottom-12 z-20 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-floating border border-slate-100 flex items-center gap-3">
+          <div>
+            <span class="text-[10px] font-medium text-slate-400 block">Goal</span>
+            <div class="flex items-center gap-1.5">
+              <span class="text-base font-bold text-slate-800">56K</span>
+              <span class="text-[9px] font-semibold text-rose-500 bg-rose-50 px-1 py-0.5 rounded">▼ 14.6%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating KPI Card 3: Top-Right (Bar Graph Analytics Card) -->
+        <div class="absolute right-4 sm:right-16 top-6 sm:top-8 z-20 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-floating border border-slate-100 w-44">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[9px] font-semibold bg-indigo-50 text-indigo-600 px-1.5 py-0.5 rounded">Marketing spend</span>
+          </div>
+          <!-- Mini bar visual -->
+          <div class="flex items-end justify-between h-14 pt-2 px-1">
+            <div class="w-5 bg-indigo-600 rounded-t-sm h-[90%] relative group">
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-[8px] text-slate-500">45%</span>
+            </div>
+            <div class="w-5 bg-indigo-300 rounded-t-sm h-[60%]"></div>
+            <div class="w-5 bg-indigo-100 rounded-t-sm h-[40%]"></div>
+            <div class="w-5 bg-indigo-200 rounded-t-sm h-[75%]"></div>
+          </div>
+        </div>
+
+        <!-- Floating KPI Card 4: Bottom-Right (Revenue growth) -->
+        <div class="absolute right-6 sm:right-14 bottom-8 sm:bottom-10 z-20 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-floating border border-slate-100 text-right">
+          <span class="text-[10px] text-slate-400 font-medium">Revenue growth</span>
+          <div class="text-base sm:text-lg font-bold text-indigo-700 tracking-tight">$24 345,00</div>
+          <span class="text-[9px] text-slate-400 font-normal">Financial analytics</span>
+        </div>
+      </div>
+    </section>
+    <!-- END: HeroSection -->
+
+    <!-- BEGIN: PartnerLogos -->
+    <section class="max-w-5xl mx-auto px-4" data-purpose="partner-logos">
+      <div class="bg-white/80 backdrop-blur-sm border border-slate-100 rounded-3xl py-6 px-8 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-6 md:gap-10 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
+          <div class="flex items-center gap-2">
+            <div class="w-5 h-5 bg-slate-900 rounded-full flex items-center justify-center text-white text-[11px] font-black">g</div>
+            <span class="font-bold text-slate-900 tracking-tight text-base">Goodwell</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 fill-slate-900" viewBox="0 0 24 24"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.8L18 8.5v7l-6 3.75-6-3.75v-7l6-3.7z"></path></svg>
+            <span class="font-bold text-slate-900 tracking-tight text-base">Sisyphus</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-slate-900 stroke-current" fill="none" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 15s3-6 8-6 8 6 8 6"></path></svg>
+            <span class="font-bold text-slate-900 tracking-tight text-base">AlphaWave</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="flex flex-col gap-0.5">
+              <span class="w-4 h-1 bg-slate-900 rounded-sm"></span>
+              <span class="w-4 h-1 bg-slate-900 rounded-sm"></span>
+              <span class="w-3 h-1 bg-slate-900 rounded-sm"></span>
+            </div>
+            <span class="font-bold text-slate-900 tracking-tight text-base">Railspeed</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-slate-900 fill-current" viewBox="0 0 24 24"><circle cx="6" cy="12" r="3"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="18" cy="12" r="3"></circle></svg>
+            <span class="font-bold text-slate-900 tracking-tight text-base">Sonorous</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: PartnerLogos -->
+
+    <!-- BEGIN: ValuePropositionSection -->
+    <section class="max-w-4xl mx-auto px-4 pt-12 pb-8 text-center relative" data-purpose="value-proposition">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-medium shadow-sm mb-4">
+        Smart Analytics
+      </div>
+
+      <!-- Floating Badge: Mini Sparkline Icon Left -->
+      <div class="hidden sm:block absolute left-8 top-16 bg-white p-3 rounded-2xl shadow-floating border border-slate-100 rotate-[-6deg]">
+        <div class="flex items-center gap-1 text-[10px] text-emerald-600 font-bold mb-1">
+          <span>+12%</span>
+        </div>
+        <svg class="w-12 h-6 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 50 25">
+          <path d="M2 20 L15 12 L28 17 L46 4" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+
+      <!-- Floating Badge: Red Checkmark Right -->
+      <div class="hidden sm:flex absolute right-14 top-10 w-8 h-8 rounded-xl bg-rose-500 text-white items-center justify-center shadow-floating rotate-12">
+        <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl md:text-[54px] font-bold text-slate-900 tracking-tight leading-[1.15] mt-2">
+        Connecting Your<br/>
+        Financial Data to<br/>
+        Smarter Growth
+      </h2>
+
+      <div class="mt-6 flex sm:inline-flex items-center justify-center gap-4 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-100 text-xs font-semibold text-slate-600 shadow-sm">
+        <div class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Income</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+          <span>Expenses</span>
+        </div>
+      </div>
+    </section>
+    <!-- END: ValuePropositionSection -->
+
+    <!-- BEGIN: FeatureTrioSection -->
+    <section class="space-y-8" data-purpose="smarter-tools">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+            Smarter tools for<br/>business finance
+          </h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-500 max-w-md font-normal leading-relaxed">
+          Manage investments, track spending, and monitor transactions with clear insights, real-time financial analytics, and powerful tools designed to optimize business performance and support smarter financial decisions.
+        </p>
+      </div>
+
+      <!-- Bento Trio Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Feature Card 1: Investment tracking -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-card flex flex-col justify-between hover:shadow-floating transition-shadow">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700 mb-4">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <h4 class="text-base font-bold text-slate-900 mb-1">Investment tracking</h4>
+            <p class="text-xs text-slate-500 leading-normal mb-8">
+              Monitor your investment performance and identify new opportunities with clear financial insights.
+            </p>
+          </div>
+          <div class="bg-slate-50/80 rounded-2xl p-4 border border-slate-100">
+            <div class="bg-white p-3.5 rounded-xl shadow-sm border border-slate-100">
+              <div class="flex justify-between items-center text-xs mb-3">
+                <span class="text-slate-400 font-medium">Invested Amount</span>
+                <span class="text-slate-900 font-bold">$6,100 / <span class="text-slate-400 font-normal">$10,000</span></span>
+              </div>
+              <div class="w-full bg-slate-100 h-6 rounded-md overflow-hidden p-0.5 relative">
+                <div class="bg-emerald-500 h-full rounded flex items-center justify-end pr-2 text-white font-bold text-[10px]" style="width: 60%;">
+                  60%
+                </div>
+              </div>
+              <div class="flex justify-between text-[10px] text-slate-400 mt-2 px-0.5">
+                <span>0</span>
+                <span>20</span>
+                <span>40</span>
+                <span>60</span>
+                <span>80</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Card 2: Smart corporate cards -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-card flex flex-col justify-between hover:shadow-floating transition-shadow">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700 mb-4">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <h4 class="text-base font-bold text-slate-900 mb-1">Smart corporate cards</h4>
+            <p class="text-xs text-slate-500 leading-normal mb-8">
+              Manage company spending with intelligent cards and full visibility across every transaction.
+            </p>
+          </div>
+          <div class="bg-slate-50/80 rounded-2xl p-4 border border-slate-100">
+            <div class="card-gradient-visa h-24 rounded-xl p-3 text-white flex flex-col justify-between shadow-md relative overflow-hidden">
+              <div class="flex justify-between items-center">
+                <span class="text-[11px] font-extrabold italic tracking-wider">VISA</span>
+                <div class="w-3 h-3 rounded-full bg-white/30 backdrop-blur-sm"></div>
+              </div>
+              <div class="flex items-center gap-1.5 opacity-90">
+                <div class="w-4 h-3 bg-amber-300 rounded-sm"></div>
+                <div class="w-2.5 h-2.5 rounded-full border border-white/40"></div>
+              </div>
+            </div>
+            <div class="mt-3 bg-white p-3 rounded-xl border border-slate-100">
+              <div class="text-[17px] font-extrabold text-slate-900 tracking-tight">$28,400</div>
+              <div class="text-[10px] text-slate-400 font-medium">Total balance</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Card 3: Transaction monitoring -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-card flex flex-col justify-between hover:shadow-floating transition-shadow">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700 mb-4">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <h4 class="text-base font-bold text-slate-900 mb-1">Transaction monitoring</h4>
+            <p class="text-xs text-slate-500 leading-normal mb-8">
+              Track every payment and transfer in real time with a clear transaction history.
+            </p>
+          </div>
+          <div class="bg-slate-50/80 rounded-2xl p-3 border border-slate-100">
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-200/60">
+              <span class="text-xs font-bold text-slate-800">Transaction History</span>
+              <div class="flex items-center gap-1 text-[10px] text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+                <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Filters
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between bg-white p-2 rounded-lg border border-slate-100 text-xs">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 rounded-full bg-slate-900 flex items-center justify-center text-white text-[9px] font-bold">✓</div>
+                  <div>
+                    <div class="font-semibold text-slate-800 text-[11px]">Nike</div>
+                    <div class="text-[9px] text-slate-400">2:24 PM</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-slate-900 text-[11px]">-$149.99</div>
+                  <span class="text-[9px] text-amber-500 font-medium">Incomplete</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between bg-white p-2 rounded-lg border border-slate-100 text-xs">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">⇄</div>
+                  <div>
+                    <div class="font-semibold text-slate-800 text-[11px]">Transfer</div>
+                    <div class="text-[9px] text-slate-400">11:18 AM</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-emerald-600 text-[11px]">+$250.00</div>
+                  <span class="text-[9px] text-emerald-600 font-medium">Success</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: FeatureTrioSection -->
+
+    <!-- BEGIN: ThreeSimpleStepsSection -->
+    <section class="pt-8 pb-12 text-center" data-purpose="three-simple-steps">
+      <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
+        Three simple steps<br/>to get started
+      </h3>
+      <p class="mt-3 text-xs sm:text-sm text-slate-500 max-w-lg mx-auto font-normal">
+        A simple three-step onboarding process that helps your team connect financial data, configure analytics tools, and start tracking business insights in minutes.
+      </p>
+
+      <div class="mt-6 flex justify-center">
+        <button aria-label="Next steps" class="w-10 h-10 rounded-full bg-[#E85D45] text-white flex items-center justify-center shadow-md hover:bg-[#d94f37] transition-colors" type="button">
+          <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+      </div>
+
+      <!-- Onboarding Step Showcase Carousel -->
+      <div class="mt-12 flex items-center justify-center gap-4 relative">
+        <div class="hidden md:block w-24 h-72 bg-slate-100 rounded-3xl opacity-60"></div>
+        
+        <div class="w-full max-w-2xl bg-black rounded-[32px] p-6 sm:p-8 relative shadow-2xl overflow-hidden text-left">
+          <div class="relative bg-slate-200 rounded-2xl overflow-hidden h-72 sm:h-80 flex items-center justify-center">
+            <img alt="Consultant in onboarding session" class="w-full h-full object-cover object-center" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"/>
+            
+            <div class="absolute top-4 right-4 w-24 h-24 rounded-2xl overflow-hidden border-2 border-amber-500 shadow-lg">
+              <img alt="Team member" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80"/>
+            </div>
+
+            <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-slate-100 shadow-floating text-slate-800 w-56">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[11px] font-bold">Onboarding Session</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              </div>
+              <span class="text-[9px] text-slate-400 block mb-2">Setup call with your finance team</span>
+              <div class="flex items-center justify-between pt-1 border-t border-slate-100">
+                <div class="flex -space-x-1.5 overflow-hidden">
+                  <span class="inline-block h-5 w-5 rounded-full ring-2 ring-white bg-slate-300"></span>
+                  <span class="inline-block h-5 w-5 rounded-full ring-2 ring-white bg-slate-400"></span>
+                  <span class="inline-block h-5 w-5 rounded-full ring-2 ring-white bg-slate-500"></span>
+                </div>
+                <div class="text-[9px] font-semibold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                  13:00 - 13:45
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden md:block w-24 h-72 bg-slate-100 rounded-3xl opacity-60"></div>
+      </div>
+
+      <div class="max-w-2xl mx-auto mt-6 flex flex-col sm:flex-row items-center justify-between text-left gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg border border-slate-200 text-xs font-bold flex items-center justify-center text-slate-400">1</span>
+          <span class="w-7 h-7 rounded-lg bg-slate-900 text-xs font-bold flex items-center justify-center text-white">2</span>
+          <div>
+            <h5 class="text-sm font-bold text-slate-900">Connect with your financial team</h5>
+            <p class="text-xs text-slate-500 max-w-md">Schedule a quick onboarding session with your team or advisor. Elegostra helps you review financial data, connect key accounts, and set up your analytics workspace.</p>
+          </div>
+        </div>
+        <span class="w-7 h-7 rounded-lg border border-slate-200 text-xs font-bold flex items-center justify-center text-slate-400 self-start sm:self-center">3</span>
+      </div>
+    </section>
+    <!-- END: ThreeSimpleStepsSection -->
+
+    <!-- BEGIN: FeaturesSection -->
+    <section class="space-y-12" data-purpose="features-overview">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
+        <div class="md:col-span-6 lg:col-span-7">
+          <h2 class="text-4xl sm:text-5xl md:text-[54px] font-bold tracking-tight text-slate-950 leading-[1.08]">
+            Why modern teams<br/>choose Elegostra
+          </h2>
+        </div>
+        <div class="md:col-span-6 lg:col-span-5">
+          <p class="text-slate-500 text-sm sm:text-base leading-relaxed">
+            Elegostra combines powerful financial analytics with a clean, intuitive interface. Companies choose our platform to gain real-time insights into their cash flow, spending patterns, and financial growth — all in one unified dashboard.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left Big Card: $42K & Intelligence portrait -->
+        <div class="lg:col-span-6 bg-white rounded-3xl p-7 relative border border-slate-100 flex flex-col justify-between overflow-hidden shadow-sm min-h-[460px]">
+          <svg class="absolute inset-0 w-full h-full pointer-events-none stroke-emerald-500" fill="none" viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg">
+            <path d="M-10 160 C 100 120, 160 100, 240 120 C 320 140, 390 90, 480 70" stroke-linecap="round" stroke-width="2.5"></path>
+          </svg>
+          
+          <div class="z-10 flex items-center justify-start">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 text-white text-xs font-semibold backdrop-blur-md shadow-sm">
+              <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+              </svg>
+              Financial intelligence
+            </span>
+          </div>
+
+          <div class="relative z-10 flex justify-end mt-4">
+            <img alt="Smiling financial manager with glasses in gray suit" class="w-64 sm:w-72 h-80 object-cover object-top rounded-2xl drop-shadow-md" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"/>
+          </div>
+
+          <div class="z-10 mt-auto pt-2">
+            <div class="text-5xl font-extrabold text-slate-950 tracking-tight">$42K</div>
+            <p class="text-slate-500 text-xs sm:text-sm font-medium mt-1 max-w-[260px]">
+              Average financial growth achieved after implementing Elegostra insights.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Side: 3 Modular Cards -->
+        <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <!-- Top Right Card: Growth forecasting -->
+          <div class="sm:col-span-2 bg-[#f4f5f8] rounded-3xl p-6 sm:p-7 border border-slate-200/50 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-slate-950">Growth forecasting</h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1 max-w-sm">
+                Elegostra doesn't just show your current numbers - it reveals where they are heading.
+              </p>
+            </div>
+            <div class="flex items-end justify-between mt-6 pt-2">
+              <div>
+                <button class="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-full transition-colors shadow-sm" type="button">
+                  Learn more
+                </button>
+              </div>
+              <div class="flex items-end gap-2.5 pb-1">
+                <div class="flex flex-col items-center">
+                  <div class="w-5 sm:w-6 h-12 bg-amber-100 rounded-lg"></div>
+                </div>
+                <div class="flex flex-col items-center">
+                  <div class="w-5 sm:w-6 h-16 bg-amber-200/70 rounded-lg"></div>
+                </div>
+                <div class="flex flex-col items-center relative">
+                  <span class="absolute -top-6 text-[10px] font-bold text-slate-800 bg-white px-1.5 py-0.5 rounded shadow-sm border border-slate-100">$3.1k</span>
+                  <div class="w-5 sm:w-6 h-20 bg-orange-400 rounded-lg"></div>
+                </div>
+                <div class="flex flex-col items-center">
+                  <div class="w-5 sm:w-6 h-14 bg-amber-100 rounded-lg"></div>
+                </div>
+                <div class="flex flex-col items-center relative">
+                  <span class="absolute -top-6 text-[10px] font-bold text-white bg-slate-900 px-1.5 py-0.5 rounded shadow-sm">$6.4k</span>
+                  <div class="w-5 sm:w-6 h-28 bg-[#f95738] rounded-lg"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Left: Results-Driven -->
+          <div class="bg-[#3151fe] text-white rounded-3xl p-6 flex flex-col justify-between shadow-sm">
+            <div>
+              <h3 class="text-lg font-bold">Results-Driven</h3>
+              <p class="text-xs text-blue-100/90 mt-2 leading-relaxed">
+                Elegostra detects inefficiencies and helps increase financial efficiency.
+              </p>
+            </div>
+            <div class="mt-8">
+              <div class="flex justify-end mb-2">
+                <span class="bg-white/20 backdrop-blur-md text-white text-[11px] font-semibold px-2 py-0.5 rounded-full border border-white/20">
+                  +24%
+                </span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <div class="h-6 flex-1 bg-white/25 rounded-md"></div>
+                <div class="h-6 flex-1 bg-white/25 rounded-md"></div>
+                <div class="h-6 flex-1 bg-white/25 rounded-md"></div>
+                <div class="h-6 flex-1 bg-white/25 rounded-md"></div>
+                <div class="h-6 flex-1 bg-white rounded-md flex items-center justify-center">
+                  <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Right: Workspace Photo -->
+          <div class="rounded-3xl overflow-hidden shadow-sm border border-slate-200/50 bg-slate-100 h-52 sm:h-auto">
+            <img alt="Professional woman working with laptop at modern wooden desk" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"/>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: FeaturesSection -->
+
+    <!-- BEGIN: TestimonialsSection -->
+    <section class="space-y-12" data-purpose="customer-social-proof">
+      <div class="flex flex-col items-center text-center">
+        <div class="flex items-center -space-x-2.5 mb-6">
+          <img alt="Customer 1" class="inline-block h-11 w-11 rounded-full ring-2 ring-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"/>
+          <img alt="Customer 2" class="inline-block h-11 w-11 rounded-full ring-2 ring-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"/>
+          <img alt="Customer 3" class="inline-block h-11 w-11 rounded-full ring-2 ring-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"/>
+          <img alt="Customer 4" class="inline-block h-11 w-11 rounded-full ring-2 ring-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"/>
+        </div>
+        <h2 class="text-4xl sm:text-5xl md:text-[54px] font-extrabold text-slate-950 tracking-tight leading-tight max-w-2xl">
+          Real results from<br/>real companies
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Column 1: Testimonial & Marketly Logo -->
+        <div class="space-y-6 flex flex-col justify-between">
+          <div class="bg-white rounded-3xl p-7 border border-slate-100 shadow-sm relative">
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              "Elegostra completely changed how we monitor our financial performance.
+              <br/><br/>
+              The real-time analytics helped us identify unnecessary spending and improve our cash flow visibility across departments."
+            </p>
+            <div class="flex items-center gap-3 mt-7 pt-2">
+              <img alt="Michael Carter" class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80"/>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900 leading-tight">Michael Carter</h4>
+                <p class="text-[11px] text-slate-400">CFO - BrightWave Technologies</p>
+              </div>
+            </div>
+            <div class="absolute -bottom-3 -left-3 w-8 h-8 rounded-full bg-[#f95738] flex items-center justify-center shadow-md">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm4 0H9v2h2V9zm4 0h-2v2h2V9z"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="bg-[#f0f2f5] rounded-3xl p-7 flex items-center justify-center border border-slate-200/40">
+            <div class="flex items-center gap-2.5">
+              <span class="flex items-end gap-1">
+                <span class="w-1.5 h-3 bg-slate-900 rounded-sm"></span>
+                <span class="w-1.5 h-5 bg-slate-900 rounded-sm"></span>
+                <span class="w-1.5 h-4 bg-slate-900 rounded-sm"></span>
+              </span>
+              <span class="text-xl font-bold tracking-tight text-slate-900">Marketly</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Sophia Martinez & Daniel Foster Cards -->
+        <div class="space-y-6">
+          <div class="bg-white rounded-3xl p-7 border border-slate-100 shadow-sm">
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              "Before Elegostra we relied heavily on spreadsheets and delayed financial reports, which often made it difficult to react quickly to changes. Now we see our financial metrics instantly and make decisions much faster."
+            </p>
+            <div class="flex items-center gap-3 mt-6">
+              <img alt="Sophia Martinez" class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80"/>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900 leading-tight">Sophia Martinez</h4>
+                <p class="text-[11px] text-slate-400">Finance Manager - NovaRetail Group</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-7 border border-slate-100 shadow-sm">
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              "Elegostra helps us forecast financial trends and optimize our operational budget with confidence. Complex financial data becomes simple, visual, and actionable for the entire team."
+            </p>
+            <div class="flex items-center gap-3 mt-6">
+              <img alt="Daniel Foster" class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80"/>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900 leading-tight">Daniel Foster</h4>
+                <p class="text-[11px] text-slate-400">Head of Operations - CloudSphere</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: Startup Card & Video Review Card -->
+        <div class="space-y-6 flex flex-col">
+          <div class="bg-[#f0f2f5] rounded-3xl p-6 flex items-center justify-center border border-slate-200/40">
+            <div class="flex items-center gap-2">
+              <svg class="w-6 h-6 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+              <span class="text-xl font-bold tracking-tight text-slate-900">Startup</span>
+            </div>
+          </div>
+
+          <div class="relative rounded-3xl overflow-hidden shadow-sm flex-1 min-h-[300px] border border-slate-100 group">
+            <img alt="Distinguished executive in suit" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            
+            <div class="absolute top-4 right-4 bg-white/95 rounded-2xl px-3 py-2 shadow-lg flex items-center justify-center">
+              <div class="w-7 h-5 bg-[#ff0000] rounded-md flex items-center justify-center">
+                <svg class="w-2.5 h-2.5 text-white ml-0.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </div>
+            </div>
+
+            <div class="absolute bottom-5 left-5">
+              <a class="text-xs text-white/90 font-medium hover:text-white flex items-center gap-1.5 transition-colors" href="#">
+                Watch video review
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: TestimonialsSection -->
+
+    <!-- BEGIN: CTABannerSection -->
+    <section class="cta-contour-bg text-white rounded-[38px] p-8 sm:p-12 md:p-16 relative overflow-hidden shadow-xl border border-slate-800" data-purpose="cta-banner">
+      <svg class="svg-contour" fill="none" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-100 200 C 200 100, 400 450, 700 300 C 900 200, 1100 350, 1200 300" stroke="#ffffff" stroke-dasharray="4 4" stroke-width="1.2"></path>
+        <path d="M-50 400 C 250 350, 500 550, 850 400 C 1050 320, 1200 450, 1300 400" stroke="#ffffff" stroke-width="1.2"></path>
+        <path d="M0 500 C 350 450, 600 650, 950 500" stroke="#ffffff" stroke-width="1"></path>
+      </svg>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+        <div class="lg:col-span-6 space-y-6">
+          <h2 class="text-3xl sm:text-4xl md:text-[46px] font-bold tracking-tight text-white leading-[1.12]">
+            Take your financial<br class="hidden sm:inline"/> analytics to the<br class="hidden sm:inline"/> next level today
+          </h2>
+          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-md">
+            Elegostra gives your team the tools to uncover opportunities, understand financial performance, and make smarter decisions in real time. Turn complex data into clear insights.
+          </p>
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a class="px-6 py-3 rounded-full bg-[#f95738] hover:bg-[#e04326] text-white text-xs font-semibold transition-all shadow-md" href="#trial">
+              Start Free Trial
+            </a>
+            <a class="px-6 py-3 rounded-full border border-slate-700 hover:border-slate-500 text-white text-xs font-semibold transition-all" href="#demo">
+              Book a Demo
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[380px] sm:min-h-[420px]">
+          <div class="absolute top-2 right-4 sm:right-10 z-30 bg-white text-slate-900 rounded-full px-4 py-1.5 shadow-lg border border-slate-100 flex flex-col items-start">
+            <span class="text-[9px] uppercase tracking-wider text-slate-400 font-semibold">Revenue</span>
+            <span class="text-xs font-bold text-slate-900">+ 58%</span>
+          </div>
+
+          <!-- Sunrise Orange-Red Card ($3946.48) -->
+          <div class="relative z-20 w-64 sm:w-72 rounded-2xl p-5 bg-gradient-to-tr from-[#f95738] via-[#ff7844] to-[#f4b340] text-white shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+            <div class="flex justify-between items-center mb-6">
+              <span class="text-[11px] font-black tracking-widest uppercase">VISA</span>
+              <svg class="w-4 h-4 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+              </svg>
+            </div>
+            <div class="text-2xl font-bold tracking-tight mb-4">$3946.48</div>
+            <div class="flex justify-between items-center text-[10px] opacity-90 font-medium">
+              <span>****4329</span>
+              <span>09/26</span>
+            </div>
+          </div>
+
+          <!-- Dark Navy Card ($4846.50) -->
+          <div class="relative z-10 w-64 sm:w-72 rounded-2xl p-5 bg-[#142247] text-white shadow-xl -mt-10 -ml-12 border border-slate-700/60 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
+            <div class="flex justify-between items-center mb-6">
+              <div class="flex -space-x-1">
+                <span class="w-3.5 h-3.5 rounded-full bg-slate-300 inline-block opacity-80"></span>
+                <span class="w-3.5 h-3.5 rounded-full bg-slate-400 inline-block opacity-50"></span>
+              </div>
+              <svg class="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 004 11m0 0c0 2.473.345 4.866.99 7.132" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+              </svg>
+            </div>
+            <div class="text-2xl font-bold tracking-tight mb-4">$4846.50</div>
+            <div class="flex justify-between items-center text-[10px] text-slate-400 font-medium">
+              <span>****1224</span>
+              <span>12/26</span>
+            </div>
+          </div>
+
+          <!-- Total Balance Badge ($28,400) -->
+          <div class="absolute bottom-2 right-2 sm:right-6 z-30 bg-white text-slate-900 rounded-2xl px-3.5 py-2 shadow-xl border border-slate-100 flex items-center gap-2.5">
+            <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="text-[9px] uppercase tracking-wider text-slate-400 font-semibold leading-none">Total Balance</div>
+              <div class="text-xs font-bold text-slate-900 leading-tight">$28,400</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: CTABannerSection -->
+
+    <!-- BEGIN: FooterSection -->
+    <footer class="space-y-12 pt-2" data-purpose="site-footer">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+        <!-- Left Column: Start Trial Box -->
+        <div class="md:col-span-5 bg-[#f0f2f5] rounded-3xl p-7 flex flex-col justify-between border border-slate-200/50" id="trial">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-slate-950 tracking-tight leading-tight">
+              Start today<br/>with free 14<br/>day trial
+            </h3>
+          </div>
+          <div class="flex items-center gap-2 pt-8">
+            <button class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-full transition-colors shadow-sm" type="button">
+              Start Free Trial
+            </button>
+            <button aria-label="Apple App Store" class="w-8 h-8 rounded-full border border-slate-300 hover:border-slate-400 bg-white flex items-center justify-center text-slate-800 transition-colors" type="button">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.18c.65-.8 1.09-1.92.97-3.04-.95.04-2.1.64-2.77 1.43-.59.68-1.11 1.79-.97 2.88 1.06.08 2.14-.54 2.77-1.27z"></path>
+              </svg>
+            </button>
+            <button aria-label="Google Play" class="w-8 h-8 rounded-full border border-slate-300 hover:border-slate-400 bg-white flex items-center justify-center text-slate-800 transition-colors font-bold text-xs" type="button">
+              G
+            </button>
+          </div>
+        </div>
+
+        <!-- Center Column: Nav Links -->
+        <div class="md:col-span-5 grid grid-cols-2 gap-6 pt-3">
+          <div>
+            <h4 class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-4">About Us</h4>
+            <ul class="space-y-2.5 text-xs font-semibold text-slate-800">
+              <li><a class="hover:text-blue-600 transition-colors" href="#">Home</a></li>
+              <li><a class="hover:text-blue-600 transition-colors" href="#">Who we are</a></li>
+              <li><a class="hover:text-blue-600 transition-colors" href="#">Reviews</a></li>
+              <li><a class="hover:text-blue-600 transition-colors" href="#">Contacts</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-4">Platform</h4>
+            <ul class="space-y-2.5 text-xs font-semibold text-slate-800">
+              <li><a class="hover:text-blue-600 transition-colors" href="#">Investment insights</a></li>
+              <li><a class="hover:text-blue-600 transition-colors" href="#">Payment activity</a></li>
+              <li><a class="hover:text-blue-600 transition-colors" href="#">Corporate cards</a></li>
+              <li><a class="hover:text-blue-600 transition-colors" href="#">Financial analytics</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right Column: Socials -->
+        <div class="md:col-span-2 pt-3 flex flex-col items-start md:items-end">
+          <div class="w-full md:w-auto">
+            <h4 class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-4 md:text-center">Socials</h4>
+            <div class="flex md:flex-col gap-2.5">
+              <a aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors" href="#">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                </svg>
+              </a>
+              <a aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors" href="#">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.6 5H18V0h-3.808C10.595 0 9 1.582 9 4.615V8z"></path>
+                </svg>
+              </a>
+              <a aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors" href="#">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"></path>
+                </svg>
+              </a>
+              <a aria-label="YouTube" class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors" href="#">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal and Copyright bar -->
+      <div class="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-end gap-6 text-xs text-slate-500 font-medium">
+        <a class="hover:text-slate-800 transition-colors" href="#">Terms of Use</a>
+        <a class="hover:text-slate-800 transition-colors" href="#">Privacy Policy</a>
+        <a class="hover:text-slate-800 transition-colors" href="#">Cookie Policy</a>
+      </div>
+    </footer>
+    <!-- END: FooterSection -->
   </div>
 </div>
