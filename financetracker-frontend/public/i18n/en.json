@@ -1,0 +1,18 @@
+{
+  "APP": {
+    "TITLE": "Personal Finance Tracker",
+    "WELCOME": "Welcome back"
+  },
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "TRANSACTIONS": "Transactions",
+    "CATEGORIES": "Categories",
+    "REPORTS": "Reports"
+  },
+  "DASHBOARD": {
+    "TOTAL_BALANCE": "Total Balance",
+    "MONTHLY_INCOME": "Monthly Income",
+    "MONTHLY_EXPENSES": "Monthly Expenses",
+    "SAVINGS_RATE": "Savings Rate"
+  }
+}

@@ -1,0 +1,37 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 class="page-title">Financial Overview</h1>
+    <p class="page-subtitle">Track your net worth, cash flow, and spending habits.</p>
+  </div>
+
+  <div class="stats-grid">
+    <app-stat-card
+      title="Total Balance"
+      [value]="totalBalance() | appCurrency"
+      icon="💵"
+      subtitle="+8.4% from last month"
+      trend="positive"
+    />
+    <app-stat-card
+      title="Monthly Income"
+      [value]="monthlyIncome() | appCurrency"
+      icon="📥"
+      subtitle="Active & Recurring"
+      trend="positive"
+    />
+    <app-stat-card
+      title="Monthly Expenses"
+      [value]="monthlyExpense() | appCurrency"
+      icon="📤"
+      subtitle="47% of total budget"
+      trend="neutral"
+    />
+    <app-stat-card
+      title="Savings Rate"
+      [value]="savingsRate()"
+      icon="🎯"
+      subtitle="Goal: > 50%"
+      trend="positive"
+    />
+  </div>
+</div>

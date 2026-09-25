@@ -1,0 +1,37 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 class="page-title">Transactions</h1>
+    <p class="page-subtitle">View and manage all your income and expenses.</p>
+  </div>
+
+  <div class="transactions-table-wrapper">
+    <table class="transactions-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Type</th>
+          <th class="text-right">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (tx of transactionService.transactions(); track tx.id) {
+          <tr>
+            <td>{{ tx.date }}</td>
+            <td>{{ tx.title }}</td>
+            <td><span class="category-badge">{{ tx.category.name }}</span></td>
+            <td><span class="type-badge" [ngClass]="tx.type.toLowerCase()">{{ tx.type }}</span></td>
+            <td class="text-right" [ngClass]="tx.type.toLowerCase()">
+              {{ tx.type === 'EXPENSE' ? '-' : '+' }}{{ tx.amount | appCurrency }}
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5" class="empty-state">No transactions found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
